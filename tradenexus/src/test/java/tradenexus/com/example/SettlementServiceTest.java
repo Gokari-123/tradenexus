@@ -12,9 +12,9 @@ import tradenexus.com.example.Services.SettlementService;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class SettlementServiceTest {
@@ -55,9 +55,35 @@ public class SettlementServiceTest {
 
         assertEquals(2,result.size());
         verify(settlementRepository,times(1)).findAll();
-
-
-
     }
 
+    @Test
+    void testGetSettlementById_Found(){
+        Settlement settlement=new Settlement(1L,LocalDate.of(2025,07,16),"Completed");
+        when(settlementRepository.findById(1L)).thenReturn(Optional.of(settlement));
+
+        Optional<Settlement> result=settlementService.getSettlementById(1L);
+
+        assertTrue(result.isPresent());
+        assertEquals("Completed",result.get().getSettlementStatus());
+        verify(settlementRepository,times(1)).findById(1L);
+    }
+
+    @Test
+    void testGetSettlementById_notFound(){
+        when(settlementRepository.findById(99L)).thenReturn(Optional.empty());
+
+        Optional<Settlement> result=settlementService.getSettlementById(99L);
+
+        assertFalse(result.isPresent());
+        verify(settlementRepository,times(1)).findById(99l);
+    }
+
+    @Test
+    void testDeleteSettlement(){
+        doNothing().when(settlementRepository).deleteById(1L);
+        settlementService.deleteSettlement(1L);
+
+        verify(settlementRepository,times(1)).deleteById(1L);
+    }
 }
