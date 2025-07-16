@@ -1,0 +1,17 @@
+tradenexus\com\example\Controller\SettlementController.class
+tradenexus\com\example\Repository\BankRepository.class
+tradenexus\com\example\Controller\TradeController.class
+tradenexus\com\example\Services\BankService.class
+tradenexus\com\example\Entity\Trade.class
+tradenexus\com\example\Repository\ClientRepository.class
+tradenexus\com\example\Controller\ClientController.class
+tradenexus\com\example\Services\SettlementService.class
+tradenexus\com\example\Repository\SettlementRepository.class
+tradenexus\com\example\Services\TradeService.class
+tradenexus\com\example\Controller\BankController.class
+tradenexus\com\example\Entity\Bank.class
+tradenexus\com\example\Entity\Client.class
+tradenexus\com\example\TradenexusApplication.class
+tradenexus\com\example\Services\ClientService.class
+tradenexus\com\example\Repository\TradeRepository.class
+tradenexus\com\example\Entity\Settlement.class
