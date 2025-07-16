@@ -57,6 +57,7 @@ public class SettlementServiceTest {
         verify(settlementRepository,times(1)).findAll();
 
 
+
     }
 
 }
